@@ -1,10 +1,30 @@
-let time;
 let city = document.querySelector('.city_name');
+let search_city=document.querySelector('.search')
+let daysContainer = document.querySelector('.day5'); // Get the element with class .5day
+let hourContainer = document.querySelector('.hour5');
+let time;
+
+search_city.addEventListener('click',async()=>{
+  let cityy = city.value.trim();  // Get user input
+  daysContainer.innerHTML='';
+  hourContainer.innerHTML='';
+  if (!cityy) { // Prevent empty input
+    console.error("City name is empty!");
+    return;
+  }
+    console.log("City entered:", cityy);
+
+    // Fetch weather data only after the user enters the city name
+    let data = await fetchData(cityy);
+    // console.log(data);
+    await main(data);
+  })
 
 city.addEventListener('keydown', async (event) => {
   if (event.key === 'Enter') {  // Wait for the user to press Enter
     let cityy = city.value.trim();  // Get user input
-
+    daysContainer.innerHTML='';
+    hourContainer.innerHTML='';
     if (!cityy) { // Prevent empty input
       console.error("City name is empty!");
       return;
@@ -20,7 +40,7 @@ city.addEventListener('keydown', async (event) => {
 });
 
 async function chalo() {
-  let a=await fetchData('london');
+  let a=await fetchData('maharashtra');
   await main(a);
 }
 
@@ -37,7 +57,9 @@ async function fetchData(cityy) {
 
     return data;
   } catch (error) {
+    alert('Please Provide Valid City Name')
     console.error('Error fetching data:', error);
+    
   }
 }
 async function fetchData1(cityname) {
@@ -62,7 +84,6 @@ async function fetchData1(cityname) {
 const dailyData = data2.list.filter(item => item.dt_txt.includes("12:00:00"));
 
 if (dailyData.length > 0) {
-    const daysContainer = document.querySelector('.day5'); // Get the element with class .5day
 
     if (daysContainer) {
         dailyData.forEach(item => {
@@ -91,7 +112,6 @@ if (dailyData.length > 0) {
 
       //  Hourly data
       if (data2.list && data2.list.length > 0) {
-        const hourContainer = document.querySelector('.hour5');
         // Extract the first 5 elements
         const firstFiveElements = data2.list.slice(0, 4);
         // Process and log data for each element
@@ -193,3 +213,41 @@ console.log(b)
 
 let a= time_String('15:00:34')
 console.log(a)
+
+let radio= document.querySelector('.checkin')
+
+let mode=document.querySelector('.mode')
+radio.addEventListener('click',()=>{
+  if(radio.dataset.val==='one')
+  {
+      document.body.style.background='#f4f3ee'
+      radio.dataset.val='two'
+      mode.innerText='Dark Mode'
+    }
+    else
+    {
+      document.body.style.background='rgb(76, 77, 77)'
+      radio.dataset.val='one';
+      mode.innerText='Light Mode'
+  }
+})
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+      document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  let lat=position.coords.latitude;
+  let lon=position.coords.longitude;
+  let data={lat,lom}
+  console.log(data)
+  return data;
+  // document.getElementById("location").innerHTML = 
+  // "Latitude: " + position.coords.latitude + 
+  // "<br>Longitude: " + position.coords.longitude;
+}
