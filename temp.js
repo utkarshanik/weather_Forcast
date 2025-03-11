@@ -244,7 +244,7 @@ function getLocation() {
 function showPosition(position) {
   let lat=position.coords.latitude;
   let lon=position.coords.longitude;
-  let data={lat,lom}
+  let data={lat,lon}
   console.log(data)
   return data;
   // document.getElementById("location").innerHTML = 
