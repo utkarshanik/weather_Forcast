@@ -64,7 +64,7 @@ async function fetchData(cityy) {
 }
 async function fetchData1(cityname) {
   try {
-         let res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=7558760060b43c7b8805cc83f755f6f5`);
+         let res = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=7558760060b43c7b8805cc83f755f6f5`);
         if (!res.ok) 
       {  
         throw new Error(`API error: ${res.status} - ${res.statusText}`);
@@ -233,21 +233,21 @@ radio.addEventListener('click',()=>{
 })
 
 
-function getLocation() {
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-      document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+// function getLocation() {
+//   if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(showPosition, showError);
+//   } else {
+//       document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+//   }
+// }
 
-function showPosition(position) {
-  let lat=position.coords.latitude;
-  let lon=position.coords.longitude;
-  let data={lat,lon}
-  console.log(data)
-  return data;
-  // document.getElementById("location").innerHTML = 
-  // "Latitude: " + position.coords.latitude + 
-  // "<br>Longitude: " + position.coords.longitude;
-}
+// function showPosition(position) {
+//   let lat=position.coords.latitude;
+//   let lon=position.coords.longitude;
+//   let data={lat,lon}
+//   console.log(data)
+//   return data;
+//   // document.getElementById("location").innerHTML = 
+//   // "Latitude: " + position.coords.latitude + 
+//   // "<br>Longitude: " + position.coords.longitude;
+// }
