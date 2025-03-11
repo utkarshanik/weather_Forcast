@@ -1,5 +1,40 @@
 body
 {
-  background: rgb(194,204,205);
-background: linear-gradient(336deg, rgba(194,204,205,1) 3%, rgba(86,93,94,1) 58%);
+  /* background: rgb(194,204,205); */
+  /* background: rgb(76, 77, 77); */
+  background-color: black;
+  background: rgb(76, 77, 77);
+  color: #fff;
+}
+.navbar
+{
+  background: rgb(76, 77, 77);
+  background-color: rgb(158, 152, 152);
+  
+}
+.tab-1
+{
+  background-color: rgb(141, 141, 141);
+  border-radius: 2rem;
+}
+p
+{
+  margin: 0%;
+}
+
+.weath img
+{
+  width: 3rem;
+  height: 3rem;
+}
+
+.time
+{
+  font-size: 7rem;
+}
+
+.row2 img
+{
+  width: 2.5rem;
+  height: 2.5rem;
 }
